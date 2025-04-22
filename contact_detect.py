@@ -88,7 +88,7 @@ def limit_angle(angle):
         angle += 2 * np.pi
     return angle
 
-model = mujoco.MjModel.from_xml_path('/home/dar/MuJoCoBin/mujoco_menagerie/franka_emika_panda/scene.xml')
+model = mujoco.MjModel.from_xml_path('/home/atri/.mujoco/mujoco_menagerie/franka_emika_panda/scene.xml')
 data = mujoco.MjData(model)
 
 class CustomViewer:
