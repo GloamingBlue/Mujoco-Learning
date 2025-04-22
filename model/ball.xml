@@ -1,0 +1,34 @@
+<mujoco model="sand-ball">
+
+  <asset>
+    <texture name="ball" type="cube" builtin="flat" mark="cross" width="13" height="13" rgb1="0.2 0.2 0.3" rgb2="0.2 0.2 0.3" markrgb="1 1 1"/>
+    <material name="ball" texture="ball" texuniform="true" rgba="1 1 1 0.3"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="5 5" texuniform="true" reflectance=".2"/>    
+  </asset>
+
+  <visual>
+    <headlight ambient="0.3 0.3 0.3"/>
+    <map stiffness="3000"/>
+  </visual>
+
+  <default>
+    <geom condim="6" friction="0.8 0.004 0.006"/>
+  </default>
+
+  <option density="1.225" viscosity="1.8e-5" timestep="1e-4" integrator="RK4"/>
+
+  <worldbody>
+    <geom type="plane" size="2 2 .02" material="grid"/>
+    <body name="sphere" pos="0 0 .2">
+      <light pos="0 0 1" mode="track"/>
+      <freejoint/>
+      <geom size=".04" mass=".02" material="ball"/>
+      <body name="sand">
+        <joint type="ball" frictionloss=".015"/>
+        <geom size=".02" rgba="0.7 0.7 0 1" mass=".2" pos="0 0 -.02" contype="0" conaffinity="0"/>
+      </body>
+    </body>
+  </worldbody>
+
+</mujoco>
